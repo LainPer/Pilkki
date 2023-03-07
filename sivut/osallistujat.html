@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Tämän vuoden osallistujat</title>
+    <link rel="stylesheet" href="../tyylit/tyylit.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- (A) LOAD SHEETJS FROM CDN -->
+    <!-- https://sheetjs.com/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <div class="taulukkosivut">
+        <div class="syottopalkki">
+          <div class="navipalkki_sivu_yla">
+            <div class="takaisin">
+                <a href="../index.html">Etusivulle</a>
+            </div>
+            <div class="syottopalkki_otsikko">
+                <h1>Tulosten laskenta -työkalu</h1>
+            </div>
+          </div>
+          <div>
+            <div class="syottopalkki_kentat">
+                <div class="syottopalkkiEkaKentta">
+                  <h3>Syötä osallistuja</h3>
+                  <form id="tulossyotto">
+                      <label for="nimi">Nimi:</label><br>
+                      <input type="text" id="nimi" name="nimi" class="input"><br>
+                      <label for="saalis">Saalis (g):</label><br>
+                      <input type="number" id="saalis" name="saalis" class="input"><br>
+                  </form> 
+                  <button onclick="lisaasaalis()" class="button">Lisää saalis</button>
+                </div>
+                <div class="syottopalkkiTokaKentta">
+                  <h3>Tallenna syötetyt tulokset Excel-tiedostoon</h3>
+                  <p>Tallenna tulokset ennen palkintosijojen laskentaa!</p>
+                  <button onclick="lataaExcel()" class="button">Lataa excel</button>
+                </div>
+                <div class="syottopalkkiKolmasKentta">
+                  <button onclick="voittaja()" class="button">Näytä palkintosijat</button>
+                  <br>
+                  
+                  <br>
+                  <button onclick="tyhjenna()" class="button">Tyhjennä tulokset</button>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="laskuriTaulukot">
+                  <div>
+                    <table id="syotetytNimet">
+                    </table>
+                </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div>
+                    <table id="syotetytTulokset">
+                    </table>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="parhaatNimet">
+                    <table id="parhaatNimet">
+                    </table>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div>
+                    <table id="parhaatTulokset">
+                    </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="osallistujat_taulukko">
+          <div>
+            <h2>OSALLISTUJAT 2023</h2>
+          </div>
+          <div>
+            <table id="osallistujat">
+                <tr>
+                    <th>Etunimi</th>
+                    <th>Sukunimi</th>
+                    <th>Kotipaikkakunta</th>
+                  </tr>
+                  <tr>
+                    <td>Ville</td>
+                    <td>Kuismin</td>
+                    <td>Tampere</td>
+                  </tr>
+                  <tr>
+                    <td>Joonas</td>
+                    <td>Valkama</td>
+                    <td>Alavus</td>
+                  </tr>
+                  <tr>
+                    <td>Jarno</td>
+                    <td>Myllymäki</td>
+                    <td>Seinäjoki</td>
+                  </tr>
+                  <tr>
+                    <td>Timo </td>
+                    <td>Uitto</td>
+                    <td>Seinäjoki</td>
+                  </tr>
+                  <tr>
+                    <td>Jussi-Matti</td>
+                    <td>Leinonen</td>
+                    <td>Seinäjoki</td>
+                  </tr>
+                  <tr>
+                    <td>Roope</td>
+                    <td>Koivisto</td>
+                    <td>Alavus</td>
+                  </tr>
+                  <tr>
+                    <td>Niko</td>
+                    <td>Saarinen</td>
+                    <td>Tampere</td>
+                  </tr>
+                  <tr>
+                    <td>Jarno</td>
+                    <td>Kivimäki</td>
+                    <td>Seinäjoki</td>
+                  </tr>
+                  <tr>
+                    <td>Perttu</td>
+                    <td>Laine</td>
+                    <td>Alavus</td>
+                  </tr>
+                  <tr>
+                    <td>Jari</td>
+                    <td>Keskinen</td>
+                    <td>Helsinki</td>
+                  </tr>
+                  <tr>
+                    <td>Arttu</td>
+                    <td>Viitasaari</td>
+                    <td>Seinäjoki</td>
+                  </tr>
+                  <tr>
+                    <td>Alexander</td>
+                    <td>Stadniski</td>
+                    <td>Helsinki</td>
+                  </tr>
+                  <tr>
+                    <td>Eetu</td>
+                    <td>Myllymäki</td>
+                    <td>Alavus</td>
+                  </tr>
+                  <tr>
+                    <td>Peetu</td>
+                    <td>Viitala</td>
+                    <td>Turku</td>
+                  </tr>
+            </table>
+          </div>
+        </div>
+        <div class="tulokset_taulukko">
+            <h2>TULOKSET 2022</h2>
+            <h3>3 parasta</h3>
+            <table>
+                <tr>
+                    <th>Sija</th>
+                    <th>Nimi</th>
+                    <th>Saalis</th>
+                  </tr>
+                  <tr>
+                    <td>1.</td>
+                    <td>Perttu Laine</td>
+                    <td>3268g</td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td>Alexander Stadniski</td>
+                    <td>2541g</td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td>Roope Koivisto</td>
+                    <td>2036g</td>
+                  </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+      
+      const nimet = [];
+      const tulokset = [];
+      const parhaatNimet = [];
+      const parhaatTulokset = [];
+
+      function lisaasaalis() {
+        //Vie nimi ja saalis omiin listoihin, resetoi input-kentät lopuksi
+        let nimi = document.getElementById("nimi").value;
+        nimet.push(nimi);
+        var saalis = document.getElementById("saalis");
+        saalis = parseInt(saalis.value, 10);
+        tulokset.push(saalis);
+        document.getElementById("tulossyotto").reset();
+        //Kirjoittaa nimitaukukon
+        var tulosNimet = "  <tr>\n    <th>Nimi</th>\n   </tr>\n";
+        for(var i=0; i<nimet.length; i++) {
+            tulosNimet += " <tr>\n";
+            tulosNimet += "   <td>"+nimet[i]+"</td>\n";
+            }
+            tulosNimet += " </tr>\n";
+         //kirjoittaa tulostaulukon, lisää g (grammaa) arvon perään
+        var tulosSaalis = "  <tr>\n    <th>Saalis</th>\n   </tr>\n";
+          for(var i=0; i<tulokset.length; i++) {
+              tulosSaalis += " <tr>\n";
+              tulosSaalis += "   <td>"+tulokset[i]+"g"+"</td>\n";
+              }
+              tulosSaalis += " </tr>\n";
+
+        //kirjoittaa taulukot HTML-koodiin, Vie nimet ja tulokset listat ulos funktiosta myöhempää käyttöä varten
+        document.getElementById("syotetytNimet").innerHTML = tulosNimet
+        document.getElementById("syotetytTulokset").innerHTML = tulosSaalis
+        return nimet, tulokset;
+
+      }
+      let j = 1
+      let painavin
+      let index
+      const tuloksetUusi = tulokset
+      const nimetUusi = nimet
+      function voittaja() {
+        //Käy listan kolme kertaa läpi, että saadaan kolme parasta tulosta. Kirjoittaa aina suurimman arvon listaan
+        while(j < 4) {
+          let painavin = Math.max(...tuloksetUusi);
+          let index = tuloksetUusi.findIndex(suurin => suurin === painavin); 
+          parhaatTulokset.push(tuloksetUusi[index]);
+          parhaatNimet.push(nimetUusi[index]);
+          tuloksetUusi[index] = 0
+          nimetUusi[index] = ""
+          j++
+        }
+        j=1
+        //kirjoitetaan kolme parasta osallistujaa taulukkoon
+        var tulosNimetParhaat = "  <tr>\n    <th>Sija</th>\n    <th>Nimi</th>\n   </tr>\n";
+          for(var i=0; i<parhaatNimet.length; i++) {
+              tulosNimetParhaat += " <tr>\n";
+              tulosNimetParhaat += "   <td>"+(i+1)+"."+"</td>\n";
+              tulosNimetParhaat += "   <td>"+parhaatNimet[i]+"</td>\n";
+              }
+              tulosNimetParhaat += " </tr>\n";
+        //kirjoitetaan kolme suurinta saalista taulukkoon
+        var tulosSaalisParhaat = "  <tr>\n    <th>Saalis</th>\n   </tr>\n";
+          for(var i=0; i<parhaatTulokset.length; i++) {
+              tulosSaalisParhaat += " <tr>\n";
+              tulosSaalisParhaat += "   <td>"+parhaatTulokset[i]+"</td>\n";
+              }
+              tulosSaalisParhaat += " </tr>\n";
+        //kirjoitetaan taulukot HTML-koodiin
+        document.getElementById("parhaatNimet").innerHTML = tulosNimetParhaat
+        document.getElementById("parhaatTulokset").innerHTML = tulosSaalisParhaat
+      
+      }
+        
+      function tyhjenna() {
+        //Listojen tyhjennystä
+        for(var i=0; i<nimet.length+3; i++) {
+          nimet.pop();
+          tulokset.pop();
+        }
+        //Listojen tyhjennystä
+        for(var i=0; i<parhaatNimet.length+3; i++) {
+          parhaatNimet.pop();
+          parhaatTulokset.pop();
+        }
+        //Listojen tyhjennystä
+        for(var i=0; i<tuloksetUusi.length; i++) {
+          tuloksetUusi.pop();
+          nimetUusi.pop();
+        }
+        // <table> muuttujien tyhjennys ja taulukoiden kirjoitus tyhjillä muuttujilla
+        tulosNimet = ""
+        tulosSaalis = ""
+        tulosNimetParhaat = ""
+        tulosSaalisParhaat = ""
+        document.getElementById("syotetytNimet").innerHTML = tulosNimet;
+        document.getElementById("syotetytTulokset").innerHTML = tulosSaalis;
+        document.getElementById("parhaatNimet").innerHTML = tulosNimetParhaat;
+        document.getElementById("parhaatTulokset").innerHTML = tulosSaalisParhaat;
+      }
+
+      function lataaExcel() {
+        // Luo data-lista ja vie listat sinne
+        const data = [["Nimi", "Saalis"]];
+        for(var i=0; i<nimet.length; i++) {
+          data.push(new Array(nimet[i], tulokset[i]));
+        }
+        //Luo uusi excel-tiedosto ja vie data riveille
+        var workbook = XLSX.utils.book_new(),
+            worksheet = XLSX.utils.aoa_to_sheet(data);
+        workbook.SheetNames.push("First");
+        workbook.Sheets["First"] = worksheet;
+
+        //Tallenna Excel-tiedosto
+        XLSX.writeFile(workbook, "Tulokset.xlsx");
+      }
+    </script>
+</body>
+
+</html>

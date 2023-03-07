@@ -1,0 +1,324 @@
+/* ------- Yleiset-----*/
+body {
+    font-family: Arial;
+    margin: 0;
+    background: rgb(186, 252, 252);
+}
+
+.takaisin {
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+}
+
+button {
+    background-color: rgb(26, 196, 159);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid rgb(26, 196, 159);
+    border-radius: 4px;
+}
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+/*------------------Etusivu---------------------*/
+.header {
+    padding: 220px;
+    background-image: url("../media/pilkkija.jpg");
+    background-color: rgb(186, 252, 252); 
+    height: 200px; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    color: rgb(128, 253, 124);
+}
+
+.header h1 {
+    font-size: 100px;
+    color: rgb(89, 109, 116);
+    text-shadow: 3px 3px red;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.note {
+    font-style: italic;
+    color: black;
+    padding-top: 2%;
+}
+
+/* Navigaatiopalkki */
+.navpalkki {
+    display: flex;
+    align-items: stretch;
+    background-color: rgb(128, 253, 124);
+}
+  
+.navpalkki a {
+    flex-grow: 1;
+    color: white;
+    padding: 30px 20px;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    align-content: stretch;
+}
+  
+.navpalkki a:hover {
+    background-color: rgb(241, 7, 7);
+    color: black;
+}
+
+/* Etusivun alapää */
+.etusivu_ala {
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+}
+
+.etusivu_ala p {
+    text-align: center;
+    font-size: 40px;
+}
+
+/*--------------------------Säännöt----------------------*/
+
+.saannot {
+    display: flex;
+    border-radius: 20px;
+    background: rgb(186, 252, 252);
+    height: calc(100vh - 40px);
+    color: black;
+}
+
+.navipalkki_sivu {
+    width: 15%;
+    background: rgb(128, 253, 124);
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 10px;
+}
+
+.saannot_paateksti {
+    width: 60%;
+    padding: 25px;
+    overflow: auto;
+}
+
+.saannot_paateksti h2{
+    font-size: 45px;
+}
+
+.saannot_paateksti p {
+    font-size: 25px;
+}
+.navipalkki_sivu .navipalkki_sivu_yla {
+    padding: 15px 30px 2px;
+}
+
+.navipalkki_sivu .navipalkki_sivu_ala {
+    padding-left: 0px;
+}
+
+.navipalkki_sivu .navipalkki_sivu_ala ul li a {
+    padding: 5px;
+    display: block;
+    color: black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-bottom: 2px;
+}
+
+.saannot_paateksti .kalataulukko {
+    padding: 40px;
+}
+
+.saannot_paateksti .kalataulukko table {
+    border: 3px solid;
+    width: 100%;
+}
+
+.saannot_paateksti .kalataulukko tr {
+    border: 3px solid;
+}
+
+.saannot_paateksti .kalataulukko th {
+    border: 3px solid;
+    height: 70px;
+}
+
+.saannot_paateksti .kalataulukko td {
+    border: 3px solid;
+    text-align: center;
+}
+
+.saannot_sivukuva {
+    width: 25%;
+    background-image: url("../media/saannot_sivukuva.jpg");
+    background-size: cover;
+}
+
+/*------------------Ilmoittautuneet ja tulokset----------------*/
+
+.osallistujat_otsikko {
+    text-align: center;
+    font-size: 30px;
+}
+
+.taulukkosivut {
+    display: flex;
+    border-radius: 20px;
+    background: rgb(186, 252, 252);
+    height: calc(100vh - 40px);
+    color: black;
+}
+
+.syottopalkki {
+    width: 25%;
+    background: rgb(128, 253, 124);
+    height: 150%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.syottopalkki .navipalkki_sivu_yla {
+    padding: 15px 30px 2px;
+}
+
+.syottopalkki_otsikko {
+    text-align: center;
+}
+
+.syottopalkki_kentat {
+    padding-left: 10px;
+}
+
+.syottopalkki_kentat .syottopalkkiEkaKentta {
+    border: 10px solid rgb(41, 38, 206);
+    padding: 20px;
+    margin: 10px;
+}
+
+.syottopalkki_kentat .syottopalkkiTokaKentta {
+    border: 10px solid rgb(41, 38, 206);
+    padding: 20px;
+    margin: 10px;
+}
+
+.syottopalkki_kentat .syottopalkkiKolmasKentta {
+    border: 10px solid rgb(41, 38, 206);
+    padding: 20px;
+    margin: 10px;
+}
+
+.osallistujat_taulukko {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.osallistujat_taulukko h2{
+    font-size: 45px;
+    text-align: center;
+}
+
+.osallistujat_taulukko table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    width: 80%;
+}
+
+.osallistujat_taulukko th {
+    font-size: 30px;
+    border: 2px solid;
+}
+
+.osallistujat_taulukko td {
+    font-size: 20px;
+    border: 1px solid;
+}
+
+.osallistujat_taulukko .osallistujat {
+    padding: 20px;
+}
+
+.osallistujat_taulukko td {
+    padding: 10px;
+    border: 1px solid;
+}
+
+.laskuriTaulukot {
+    display: flex;
+    padding: 5px;
+}
+
+.laskuriTaulukot table {
+    border: 1px solid;
+}
+
+.laskuriTaulukot th tr td {
+    border: 1px solid;
+    padding: 20px;
+}
+
+.laskuriTaulukot .parhaatNimet {
+    margin-left: 20px;
+}
+
+/*-------------------Hall Of Fame----------------*/
+
+.HallOfFame {
+    background-image: url("../media/hallOfFame2.jpg");
+    background-size: cover;
+}
+
+.HallOfFame table {
+    margin-left: 10%;
+    margin-top: 5%;
+    border: 3px solid;
+    width: 50%;
+    background-color:rgb(231, 176, 112) ;
+    opacity: 0.6;
+}
+
+.HallOfFame th {
+   font-size: 60px;
+   text-align: center;
+   border-bottom: 3px solid;
+}
+
+.HallOfFame td {
+   font-size: 40px;
+   text-align: center;
+   border-bottom: 1px solid;
+}
+
+.HallOfFame .takaisin {
+    font-size: 25px;
+    display: block;
+    text-align: left;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+}

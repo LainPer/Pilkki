@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Seinäjärven pilkkikisat</title>
+    <link rel="stylesheet" href="tyylit/tyylit.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="countdown();">
+    
+<div class="header">
+    <h1 style="margin-top: 50px;" id="etusivuOtsikko"></h1>
+</div>
+<div class="navpalkki">
+    <a href="index.html">
+        Etusivu</a>
+    <a href="sivut/saannot.html">
+        Säännöt</a>
+    <a href="https://www.jarviwiki.fi/wiki/Sein%C3%A4j%C3%A4rvi_(42.074.1.002)">
+        Kisajärvi</a>
+    <a href="sivut/osallistujat.html">
+        Ilmoittautuneet ja tulokset</a>
+    <a href="sivut/HallOfFame.html">
+        Hall Of Fame</a>
+</div>
+<div class="etusivu_ala">
+    <p id="laskuri"></p>
+    <p>Alkamisajankohta: 4.4.2023, klo 10:00 </p>
+</div>
+<script>
+    function countdown() {
+        //Alkamisajankohta
+        var maarapaiva = new Date("April 4, 2023 10:00:00").getTime();
+
+        //Päivitys joka 1 sekuntti
+        var x = setInterval(function() {
+
+            // Tämänhetkinen aika
+            var aikaNyt = new Date().getTime();
+
+            // Aika määräpäivään
+            var aikaaJaljella = maarapaiva - aikaNyt;
+
+            // Laskenta päiville tunneille minuuteille ja sekunneille
+            var paivat = Math.floor(aikaaJaljella / (1000 * 60 * 60 * 24));
+            var tunnit = Math.floor((aikaaJaljella % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minuutit = Math.floor((aikaaJaljella % (1000 * 60 * 60)) / (1000 * 60));
+            var sekunnit = Math.floor((aikaaJaljella % (1000 * 60)) / 1000);
+
+            // Vienti sivulle
+            document.getElementById("laskuri").innerHTML ="Seuraavat kisat alkavat: " + paivat + "p " + tunnit + "t "
+            + minuutit + "m " + sekunnit + "s ";
+
+            // Jos aika kulunut loppuun näytetään:
+            if (aikaaJaljella < 0) {
+            clearInterval(x);
+            document.getElementById("laskuri").innerHTML = "Seuraavien kisojen ajankohta on vielä päättämättä";
+            }
+        }, 1000);
+    }
+    //etusivun otsikon kirjoittaminen (vuosiluku päivittyy automaattisesti)
+    var nyt =  new Date();
+    var vuosi = nyt.getFullYear();
+    document.getElementById("etusivuOtsikko").innerHTML = "Seinäjärven pilkkikisat " + vuosi;
+</script>
+
+</body>
+
+</html>
